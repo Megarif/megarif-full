@@ -10,7 +10,6 @@ route.get("/auth", authMiddleware, userController.check);
 route.get("/info", userController.userInfo);
 
 
-
 module.exports = route;
 
 

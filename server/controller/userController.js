@@ -9,11 +9,11 @@ class UserController {
         if (!login || !password || !username) {
             return next(ApiError.noRequest("Некорректные данные авторизации"));
         }
-        const checkEmail = await User.findOne({where: {login}});
+        const checkEmail = await User.findOne({where: {login: login}});
         if (checkEmail) {
-            return next(ApiError.noRequest("Такой пользователь с такой почтой уже существует"));
+            return next(ApiError.noRequest("Такой пользователь с данной почтой уже существует"));
         }
-        const checkUserName = await User.findOne({where: {username}});
+        const checkUserName = await User.findOne({where: {username: username}});
         if (checkUserName) {
             return next(ApiError.noRequest("Такой пользователь с таким именем уже существует"));
         }
@@ -22,6 +22,7 @@ class UserController {
         const token = generationJwt(user.id, user.login)
         res.json(token);
     }
+
 
     async check(req, res, next) {
         const token = generationJwt(req.user.id, req.user.login);
@@ -43,10 +44,11 @@ class UserController {
         res.json(token);
     }
 
+
     async userInfo(req, res) {
         const {id} = req.query;
-        const getTodo = await User.findOne({where: {id}});
-        res.json(getTodo);
+        const getInfo = await User.findOne({where: {id:id}});
+        res.json(getInfo);
     }
 }
 
