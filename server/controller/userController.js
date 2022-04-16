@@ -75,6 +75,13 @@ class UserController {
         res.json(updateUser);
     }
 
+    async updateXp(req, res) {
+        const {id, xp} = req.body;
+        const oldXp = await User.findOne({where: {id}});
+        await User.update({xp: oldXp.xp + xp}, {where: {id}});
+        res.json(oldXp.xp + xp);
+    }
+
 }
 
 module.exports = new UserController();

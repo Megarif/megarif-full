@@ -8,7 +8,7 @@ const User = sequelize.define('user', {
     password: {type: DataTypes.STRING},
     fileName: {type: DataTypes.STRING, defaultValue: null},
     hp: {type: DataTypes.DATE},
-    xp: {type: DataTypes.INTEGER},
+    xp: {type: DataTypes.INTEGER, defaultValue: 0},
     rating: {type: DataTypes.INTEGER},
     coins: {type: DataTypes.INTEGER},
     leassonLearned: {type: DataTypes.STRING},

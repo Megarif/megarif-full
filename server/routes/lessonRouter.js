@@ -4,8 +4,8 @@ const route = new Route();
 const LessonsController = require('../controller/lessonsController');
 const authMiddleware = require("../middleware/authMidlleware");
 
-route.get('/allLessons', LessonsController.getAllLessons);
-route.post('/createLesson', LessonsController.createLeassons);
-route.get('/leasson', authMiddleware, LessonsController.getCurrentLessons);
+route.get('/all', LessonsController.getAllLessons);
+route.post('/createLesson', authMiddleware, LessonsController.createLeassons);
+route.get('/current', LessonsController.getCurrentLessons);
 
 module.exports = route;

@@ -10,7 +10,7 @@ route.get("/auth", userController.check);
 route.get("/info", authMiddleware, userController.userInfo);
 route.post("/downloadImg", userController.addImgForUser);
 route.post('/hp', userController.hp);
-
+route.post('/upXp', userController.updateXp);
 
 
 module.exports = route;
