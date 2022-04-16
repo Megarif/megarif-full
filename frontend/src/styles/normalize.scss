@@ -6,7 +6,8 @@
 
 html {
   min-height: 100%;
-  padding:    0 24px;
+  padding:    24px 24px;
+  background-color: #F4F4F4;
 }
 
 button, .button {
@@ -19,6 +20,7 @@ button, .button {
   background-color: #65E080;
   border-radius:    16px;
   border:           none;
+  text-decoration:  none;
 }
 
 // #megarif {
