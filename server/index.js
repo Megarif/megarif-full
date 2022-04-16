@@ -18,21 +18,16 @@ app.use(fileUpload({}));
 app.use("/api", route);
 
 
-
 app.use(errorHandler)
 
 const start = async () => {
-  try {
-      await sequelize.authenticate()
-      await sequelize.sync()
-      app.listen(PORT, () => console.log(`server starts...${PORT}`));
-  }
-  catch (e) {
-      console.log(e);
-  }
+    try {
+        await sequelize.authenticate()
+        await sequelize.sync({alter: true})
+        app.listen(PORT, () => console.log(`server starts...${PORT}`));
+    } catch (e) {
+        console.log(e);
+    }
 }
-
-
-
 
 start()

@@ -6,10 +6,11 @@ const authMiddleware = require("../middleware/authMidlleware");
 
 route.post("/registration", userController.registration);
 route.post("/login", userController.login);
-route.get("/auth", authMiddleware, userController.check);
-route.get("/info", userController.userInfo);
+route.get("/auth", userController.check);
+route.get("/info", authMiddleware, userController.userInfo);
 route.post("/downloadImg", userController.addImgForUser);
+route.post('/hp', userController.hp);
+route.post('/upXp', userController.updateXp);
+
 
 module.exports = route;
-
-

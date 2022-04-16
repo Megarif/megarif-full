@@ -2,8 +2,8 @@ const bqcrypt = require('bcrypt');
 const ApiError = require("../error/Apierror");
 const {User} = require("../models/models");
 const uuid = require('uuid');
-const generationJwt = require("../util/generationJwt");
 const path = require("path");
+const generationJwt = require("../util/generationJwt");
 
 
 class UserController {
@@ -23,7 +23,8 @@ class UserController {
         const hasPassword = await bqcrypt.hash(password, 3);
         const user = await User.create({login, password: hasPassword})
         const token = generationJwt(user.id, user.login)
-        res.json(token);
+        const authUser = await User.findOne({attributes: {exclude: ['password']}, where: {login: login}});
+        res.json({token, authUser});
     }
 
 
@@ -35,7 +36,7 @@ class UserController {
 
     async login(req, res, next) {
         const {login, password} = req.body;
-        const user = await User.findOne({where: {login}})
+        const user = await User.findOne({where: {login: login}});
         if (!user) {
             return next(ApiError.internal("login не найден"));
         }
@@ -43,14 +44,15 @@ class UserController {
         if (!comparePassword) {
             return next(ApiError.noRequest("Пароли не совпадают"));
         }
+        const authUser = await User.findOne({attributes: {exclude: ['password']}, where: {login: login}})
         const token = generationJwt(user.id, user.login);
-        res.json(token);
+        res.json({token, authUser});
     }
 
 
     async userInfo(req, res) {
         const {id} = req.query;
-        const getInfo = await User.findOne({attributes: {exclude: ['password']}}, {where: {id: id}});
+        const getInfo = await User.findOne({attributes: {exclude: ['password']}, where: {id: id}});
         return res.json(getInfo);
     }
 
@@ -65,8 +67,22 @@ class UserController {
         } catch (error) {
             return error;
         }
-
     }
+
+    async hp(req, res) {
+        const {id, hp} = req.body;
+        const updateUser = await User.update({hp}, {where: {id}});
+        res.json(updateUser);
+    }
+
+    async updateXp(req, res) {
+        const {id, xp} = req.body;
+        const oldXp = await User.findOne({where: {id}});
+        await User.update({xp: oldXp.xp + xp}, {where: {id}});
+        res.json(oldXp.xp + xp);
+    }
+
 }
 
 module.exports = new UserController();
+
