@@ -1,1 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap');
+
+* {
+  font-family:    'Nunito', sans-serif;
+  font-style:     normal;
+  font-weight:    400;
+  font-size:      16px;
+  line-height:    150%;
+  letter-spacing: 0.02em;
+  color:          #2B2B2BCC;
+}
+
+h2 {
+  font-weight: 600;
+  font-size:   32px;
+  line-height: 44px;
+  color:       #2B2B2B;
+}
