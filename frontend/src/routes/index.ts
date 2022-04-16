@@ -11,6 +11,14 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/landing',
+    name: 'Landing',
+    component: () => import('@/views/Home.vue'),
+    meta: {
+      layout: layouts.main
+    }
+  },
+  {
     path: '/sign-in',
     name: 'SignIn',
     component: () => import('@/views/SignIn.vue'),

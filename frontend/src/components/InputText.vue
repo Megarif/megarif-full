@@ -6,6 +6,7 @@
       :value="props.modelValue"
       :disabled="props.disabled"
       :placeholder="props.placeholder"
+      :autocomplete="props.autocomplete"
       @input="input"
     >
   </label>
@@ -22,6 +23,7 @@ interface Props {
   type?: 'text' | 'password' | 'email'
   placeholder?: string
   disabled?: boolean
+  autocomplete?: string
 }
 
 const props = defineProps<Props>()

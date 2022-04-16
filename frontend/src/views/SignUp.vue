@@ -3,18 +3,18 @@
     <nav>
       <router-link
         class="button-circle button-circle_back"
-        to="/"
+        :to="{ name: 'Home' }"
       />
+      <choose-lang />
     </nav>
   </header>
   <main>
     <section class="title">
       <h2>
-        Добро пожаловать
+        {{ lang.local.welcome }}
       </h2>
       <p>
-        Прежде чем начать учиться, <br>
-        пожалуйста авторизуйтесь.
+        {{ lang.local.before_learn }}
       </p>
     </section>
     <form
@@ -24,28 +24,31 @@
       <input-text
         v-model="username"
         type="text"
-        placeholder="Username"
+        autocomplete="nickname"
+        :placeholder="lang.local.username"
       />
       <input-text
         v-model="login"
         type="email"
-        placeholder="Email"
+        autocomplete="email"
+        :placeholder="lang.local.email"
       />
       <input-text
         v-model="password"
         type="password"
-        placeholder="Password"
-      />
-      <input-text
-        v-model="repeatPassword"
-        type="password"
-        placeholder="Repeat Password"
+        autocomplete="current-password"
+        :placeholder="lang.local.password"
       />
       <button @click="signup">
         Зарегистрироваться
       </button>
-      ИЛИ
-      <router-link :to="{ name: 'SignIn' }">
+      <span class="form__separator">
+        ИЛИ
+      </span>
+      <router-link
+        class="button"
+        :to="{ name: 'SignIn' }"
+      >
         Вход
       </router-link>
     </form>
@@ -60,13 +63,15 @@
 import InputText from '@/components/InputText.vue'
 import { ref } from 'vue'
 import useUser from '@/store/useUser'
+import useLang from '@/store/useLang'
+import ChooseLang from '@/components/ChooseLang.vue'
 
 const user = useUser()
+const lang = useLang()
 
 const username = ref('')
 const login = ref('')
 const password = ref('')
-const repeatPassword = ref('')
 
 const signup = () => {
   user.signup({
@@ -83,7 +88,12 @@ const signup = () => {
 >
 
 header {
-  padding: 24px 0;
+  padding: 0 0 24px;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .title {
@@ -107,6 +117,25 @@ main {
     display:    flex;
     align-self: flex-end;
     width:      fit-content;
+  }
+
+  &__separator {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+
+    &:before {
+      top: 50%;
+      border-radius: 50%;
+      position: absolute;
+      content: ' ';
+      width: 100%;
+      height: 1px;
+      background-color: gray;
+      clip-path: polygon(0 0, 35% 0, 35% 1px, 65% 1px, 65% 0, 100% 0, 100% 1px, 0 1px);
+    }
   }
 }
 </style>

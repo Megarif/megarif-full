@@ -1,0 +1,16 @@
+.dropdown-enter-active {
+  transition: all 0.3s ease-in-out;
+  clip-path: polygon(-100% 0, 200% 0, 200% 100%, -100% 100%);
+}
+
+.dropdown-leave-active {
+  transition: all 0.3s ease-in-out;
+  clip-path: polygon(-100% 0, 200% 0, 200% 100%, -100% 100%);
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  clip-path: polygon(-100% 100%, 200% 100%, 200% 100%, -100% 100%);
+  transform: translateY(-100%);
+  opacity: 0;
+}
