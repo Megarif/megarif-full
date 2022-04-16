@@ -16,8 +16,20 @@ interface RequestSignIn {
 }
 
 interface ResponseSignIn {
-  login: string
-  password: string
+  token: string
+  authUser: {
+    id: number
+    login: string
+    username: string
+    hp: string | null
+    xp: number
+    fileName: string
+    rating: number
+    coins: number
+    leassonLearned: Array<any> | null
+    createdAt: string
+    updatedAt: string
+  }
 }
 
 interface RequestSignUp {

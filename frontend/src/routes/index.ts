@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/landing',
     name: 'Landing',
-    component: () => import('@/views/Home.vue'),
+    component: () => import('@/views/Landing.vue'),
     meta: {
       layout: layouts.main
     }
@@ -46,6 +46,38 @@ const routes: Array<RouteRecordRaw> = [
     path: '/not-found',
     name: 'NotFound',
     component: () => import('@/views/NotFound.vue'),
+    meta: {
+      layout: layouts.empty
+    }
+  },
+  {
+    path: '/lessons',
+    name: 'Lessons',
+    component: () => import('@/views/Lessons.vue'),
+    meta: {
+      layout: layouts.main
+    }
+  },
+  {
+    path: '/bookmarks',
+    name: 'Bookmarks',
+    component: () => import('@/views/Bookmarks.vue'),
+    meta: {
+      layout: layouts.main
+    }
+  },
+  {
+    path: '/events',
+    name: 'Events',
+    component: () => import('@/views/Events.vue'),
+    meta: {
+      layout: layouts.main
+    }
+  },
+  {
+    path: '/market',
+    name: 'Market',
+    component: () => import('@/views/Market.vue'),
     meta: {
       layout: layouts.main
     }

@@ -1,16 +1,12 @@
 <template>
-  <div>
-    {{ user }}
-  </div>
+  bookmarks
 </template>
 
 <script
   setup
   lang="ts"
 >
-import useUser from '@/store/useUser'
 
-const user = useUser()
 </script>
 
 <style
