@@ -2,8 +2,8 @@ const bqcrypt = require('bcrypt');
 const ApiError = require("../error/Apierror");
 const {User} = require("../models/models");
 const uuid = require('uuid');
-const generationJwt = require("../util/generationJwt");
 const path = require("path");
+const generationJwt = require("../util/generationJwt");
 
 
 class UserController {
@@ -23,7 +23,8 @@ class UserController {
         const hasPassword = await bqcrypt.hash(password, 3);
         const user = await User.create({login, password: hasPassword})
         const token = generationJwt(user.id, user.login)
-        res.json(token);
+        const authUser = await User.findOne({attributes: {exclude: ['password']}, where: {login: login}});
+        res.json({token, authUser});
     }
 
 
@@ -39,7 +40,6 @@ class UserController {
         if (!user) {
             return next(ApiError.internal("login не найден"));
         }
-
         const comparePassword = bqcrypt.compareSync(password, user.password);
         if (!comparePassword) {
             return next(ApiError.noRequest("Пароли не совпадают"));
@@ -52,7 +52,7 @@ class UserController {
 
     async userInfo(req, res) {
         const {id} = req.query;
-        const getInfo = await User.findOne({where: {id: id}});
+        const getInfo = await User.findOne({attributes: {exclude: ['password']}, where: {id: id}});
         return res.json(getInfo);
     }
 
@@ -74,7 +74,6 @@ class UserController {
         const updateUser = await User.update({hp}, {where: {id}});
         res.json(updateUser);
     }
-
 
 }
 

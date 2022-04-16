@@ -18,7 +18,6 @@ app.use(fileUpload({}));
 app.use("/api", route);
 
 
-
 app.use(errorHandler)
 
 const start = async () => {
@@ -31,8 +30,6 @@ const start = async () => {
       console.log(e);
   }
 }
-
-
 
 
 start()

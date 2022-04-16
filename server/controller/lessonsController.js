@@ -10,6 +10,12 @@ class LessonsController {
         res.json(getLessons);
     }
 
+    async getCurrentLessons(req,res) {
+        const {id} = req.query;
+        const getLessons = await Lessons.findOne({where: id});
+        res.json(getLessons);
+    }
+
     async createLeassons(req, res, next) {
         try {
             const {name, xp, exercise, countExercise} = req.body;

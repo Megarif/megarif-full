@@ -9,7 +9,9 @@ const User = sequelize.define('user', {
     fileName: {type: DataTypes.STRING, defaultValue: null},
     hp: {type: DataTypes.DATE},
     xp: {type: DataTypes.INTEGER},
-    rating: {type: DataTypes.INTEGER}
+    rating: {type: DataTypes.INTEGER},
+    coins: {type: DataTypes.INTEGER},
+    leassonLearned: {type: DataTypes.STRING},
 });
 
 const Lessons = sequelize.define('lessons', {
@@ -21,5 +23,15 @@ const Lessons = sequelize.define('lessons', {
     countExercise: {type: DataTypes.INTEGER},
 });
 
+const Events = sequelize.define('events', {
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING},
+    status: {type: DataTypes.STRING, defaultValue: 'Модерация'},
+    description: {type: DataTypes.STRING},
+    images: {type: DataTypes.JSONB},
+});
 
-module.exports = {User, Lessons};
+User.hasOne(Events);
+
+
+module.exports = {User, Lessons, Events};
