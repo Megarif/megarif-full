@@ -1,4 +1,5 @@
 <template>
+  <event></event>
   events
 </template>
 
@@ -6,7 +7,7 @@
   setup
   lang="ts"
 >
-
+import Event from '@/components/Event.vue'
 </script>
 
 <style
