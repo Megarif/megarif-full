@@ -6,12 +6,14 @@ const User = sequelize.define('user', {
     login: {type: DataTypes.STRING, unique: true,},
     username: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
+    hp: {type: DataTypes.DATE},
     xp: {type: DataTypes.INTEGER},
     rating: {type: DataTypes.INTEGER}
 });
 
 const Lessons = sequelize.define('lessons', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING},
     xp: {type: DataTypes.INTEGER},
     exercise: {type: DataTypes.JSONB},
 });
