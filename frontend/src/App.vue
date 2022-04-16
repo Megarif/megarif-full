@@ -9,7 +9,10 @@
 import { computed } from 'vue'
 import layouts from '@/layouts'
 import { useRoute } from 'vue-router'
+import useLang from '@/store/useLang'
 
+const lang = useLang()
+lang.init()
 const route = useRoute()
 
 const layout = computed(() => {
@@ -18,15 +21,10 @@ const layout = computed(() => {
   }
   return layouts.empty
 })
+
+
 </script>
 
-<style>
-#megarif {
-  font-family:             Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing:  antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align:              center;
-  color:                   #2C3E50;
-  margin-top:              60px;
-}
+<style lang="scss">
+@import '@/styles/main';
 </style>

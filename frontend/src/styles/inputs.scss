@@ -1,0 +1,15 @@
+.button-circle {
+  width:            48px;
+  height:           48px;
+  display:          flex;
+  flex-flow:        column;
+  justify-content:  center;
+  background-color: #F93E58;
+  border-radius:    50%;
+
+  &_back {
+    background-image:    url('~@/arrow.svg');
+    background-position: center;
+    background-repeat:   no-repeat;
+  }
+}
