@@ -1,5 +1,7 @@
 const {Events} = require('../models/models');
 const ApiError = require("../error/Apierror");
+const path = require("path");
+const uuid = require('uuid');
 
 class EventController {
     async getAllEvents(req, res) {
@@ -14,11 +16,14 @@ class EventController {
             return "e";
         }
         const {name, status, description, userId} = req.body;
-        const {images} = req.files;
+        const {img} = req.files;
         if (!name || !status || !description) {
             return next(ApiError.noRequest('Ошибка'));
         }
-        const create = await Events.create({name, userId, description})
+        let filename = uuid.v4() + '.jpg';
+        img.mv(path)
+        const createEvent = await Events.create({name, userId, description})
+        res.json(createEvent);
     }
 
 }
