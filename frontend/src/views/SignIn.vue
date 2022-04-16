@@ -25,11 +25,13 @@
         v-model="login"
         type="email"
         :placeholder="lang.local.email"
+        autocomplete="login"
       />
       <input-text
         v-model="password"
         type="password"
         :placeholder="lang.local.password"
+        autocomplete="current-password"
       />
       <a class="form__forgot">
         Забыли пароль?
@@ -60,9 +62,11 @@ import { ref } from 'vue'
 import useLang from '@/store/useLang'
 import useUser from '@/store/useUser'
 import ChooseLang from '@/components/ChooseLang.vue'
+import { useRouter } from 'vue-router'
 
 const lang = useLang()
 const user = useUser()
+const router = useRouter()
 
 const login = ref('')
 const password = ref('')
@@ -71,6 +75,8 @@ const signin = () => {
   user.signin({
     login: login.value,
     password: password.value
+  }).then(() => {
+    router.push({ name: 'Home' })
   })
 }
 </script>
@@ -81,7 +87,6 @@ const signin = () => {
 >
 
 header {
-  padding: 0 0 24px;
 
   nav {
     display: flex;

@@ -1,12 +1,4 @@
 <template>
-  <header>
-    <nav>
-      <h1>
-        Мәгариф
-      </h1>
-      <choose-lang />
-    </nav>
-  </header>
   <main>
     <router-view />
   </main>
@@ -28,7 +20,7 @@
   setup
   lang="ts"
 >
-import ChooseLang from '@/components/ChooseLang.vue'
+// import ChooseLang from '@/components/ChooseLang.vue'
 import homeIcon from '~@/home.svg'
 import lessonsIcon from '~@/lessons.svg'
 import bookmarksIcon from '~@/bookmarks.svg'
@@ -67,6 +59,12 @@ const routes = [
   lang="scss"
   scoped
 >
+h1 {
+  font-weight: 600;
+  font-size: 35px;
+  line-height: 48px;
+  color: #2C9723;
+}
 .footer {
   position: fixed;
   display: flex;
@@ -111,5 +109,12 @@ const routes = [
       }
     }
   }
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  gap: 24px;
+  padding-bottom: 80px;
 }
 </style>

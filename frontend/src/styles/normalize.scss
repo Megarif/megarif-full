@@ -10,6 +10,13 @@ html {
   background-color: #F4F4F4;
 }
 
+body {
+  display: flex;
+  flex-flow: column;
+  min-width: 100%;
+  gap: 24px;
+}
+
 button, .button {
   display:          flex;
   flex-flow:        column;
