@@ -21,7 +21,7 @@ class UserController {
             return next(ApiError.noRequest("Такой пользователь с таким именем уже существует"));
         }
         const hasPassword = await bqcrypt.hash(password, 3);
-        const user = await User.create({login, password: hasPassword})
+        const user = await User.create({login, password: hasPassword, username})
         const token = generationJwt(user.id, user.login)
         const authUser = await User.findOne({attributes: {exclude: ['password']}, where: {login: login}});
         res.json({token, authUser});
@@ -71,8 +71,9 @@ class UserController {
 
     async hp(req, res) {
         const {id, hp} = req.body;
-        const updateUser = await User.update({hp}, {where: {id}});
-        res.json(updateUser);
+        await User.update({hp}, {where: {id}});
+        const user = await User.findOne({where: {id}});
+        res.json(user.hp);
     }
 
     async updateXp(req, res) {
@@ -80,6 +81,12 @@ class UserController {
         const oldXp = await User.findOne({where: {id}});
         await User.update({xp: oldXp.xp + xp}, {where: {id}});
         res.json(oldXp.xp + xp);
+    }
+
+    async saveLessons(req, res) {
+        const {id, lessonId} = req.body;
+        await User.update({lessonId}, {where: {id}});
+        const user = await User.findOne({where: {id}});
     }
 
 }

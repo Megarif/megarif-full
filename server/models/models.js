@@ -1,16 +1,16 @@
-const sequelize = require('../db')
-const {DataTypes, STRING} = require('sequelize')
+const sequelize = require('../db');
+const {DataTypes, STRING} = require('sequelize');
 
 const User = sequelize.define('user', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     login: {type: DataTypes.STRING, unique: true,},
     username: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
-    fileName: {type: DataTypes.STRING, defaultValue: null},
+    fileName: {type: DataTypes.STRING, defaultValue: process.env.URL_IMG + '9e3d3c47-5957-4fdd-a0c2-8306a2ed7ab8.jpg'},
     hp: {type: DataTypes.DATE},
     xp: {type: DataTypes.INTEGER, defaultValue: 0},
     rating: {type: DataTypes.INTEGER},
-    coins: {type: DataTypes.INTEGER},
+    coins: {type: DataTypes.INTEGER, defaultValue: 0},
     leassonLearned: {type: DataTypes.STRING},
 });
 
