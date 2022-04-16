@@ -15,8 +15,10 @@ const User = sequelize.define('user', {
 const Lessons = sequelize.define('lessons', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING},
+    fileName: {type: DataTypes.STRING},
     xp: {type: DataTypes.INTEGER},
     exercise: {type: DataTypes.JSONB},
+    countExercise: {type: DataTypes.INTEGER},
 });
 
 
