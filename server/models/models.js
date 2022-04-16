@@ -6,6 +6,7 @@ const User = sequelize.define('user', {
     login: {type: DataTypes.STRING, unique: true,},
     username: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
+    fileName: {type: DataTypes.STRING, defaultValue: null},
     hp: {type: DataTypes.DATE},
     xp: {type: DataTypes.INTEGER},
     rating: {type: DataTypes.INTEGER}

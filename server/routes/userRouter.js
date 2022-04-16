@@ -8,7 +8,7 @@ route.post("/registration", userController.registration);
 route.post("/login", userController.login);
 route.get("/auth", authMiddleware, userController.check);
 route.get("/info", userController.userInfo);
-
+route.post("/downloadImg", userController.addImgForUser);
 
 module.exports = route;
 

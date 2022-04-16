@@ -1,7 +1,10 @@
 const bqcrypt = require('bcrypt');
 const ApiError = require("../error/Apierror");
 const {User} = require("../models/models");
+const uuid = require('uuid');
 const generationJwt = require("../util/generationJwt");
+const path = require("path");
+
 
 class UserController {
     async registration(req, res, next) {
@@ -47,8 +50,22 @@ class UserController {
 
     async userInfo(req, res) {
         const {id} = req.query;
-        const getInfo = await User.findOne({where: {id:id}});
-        res.json(getInfo);
+        const getInfo = await User.findOne({attributes: {exclude: ['password']}}, {where: {id: id}});
+        return res.json(getInfo);
+    }
+
+    async addImgForUser(req, res) {
+        try {
+            const {id} = req.body;
+            const {img} = req.files;
+            let fileName = uuid.v4() + ".jpg";
+            img.mv(path.resolve(__dirname, '..', 'static', fileName));
+            const loadingImg = await User.update({fileName: fileName}, {where: {id}});
+            return res.json(loadingImg);
+        } catch (error) {
+            return error;
+        }
+
     }
 }
 
