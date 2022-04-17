@@ -89,6 +89,11 @@ class UserController {
         const user = await User.findOne({where: {id}});
     }
 
+    async deleteUser(req,res) {
+        const {login} = req.body;
+        const userDelete = await User.destroy({where: {login}});
+        res.json(userDelete);
+    }
 }
 
 module.exports = new UserController();

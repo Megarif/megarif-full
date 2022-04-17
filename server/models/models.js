@@ -6,7 +6,7 @@ const User = sequelize.define('user', {
     login: {type: DataTypes.STRING, unique: true,},
     username: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
-    fileName: {type: DataTypes.STRING, defaultValue: process.env.URL_IMG + '9e3d3c47-5957-4fdd-a0c2-8306a2ed7ab8.jpg'},
+    fileName: {type: DataTypes.STRING},
     hp: {type: DataTypes.DATE},
     xp: {type: DataTypes.INTEGER, defaultValue: 0},
     rating: {type: DataTypes.INTEGER},
@@ -21,6 +21,7 @@ const Lessons = sequelize.define('lessons', {
     xp: {type: DataTypes.INTEGER},
     exercise: {type: DataTypes.JSONB},
     countExercise: {type: DataTypes.INTEGER},
+    quiz: {type: DataTypes.JSONB}
 });
 
 const Events = sequelize.define('events', {

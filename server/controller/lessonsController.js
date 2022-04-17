@@ -12,7 +12,7 @@ class LessonsController {
 
     async getCurrentLessons(req,res) {
         const {id} = req.query;
-        const getLessons = await Lessons.findOne({where: id});
+        const getLessons = await Lessons.findOne({where: {id} });
         res.json(getLessons);
     }
 
@@ -20,7 +20,7 @@ class LessonsController {
         try {
             const {name, xp, exercise, countExercise} = req.body;
             const {img} = req.files;
-            let fileName = uuid.v4() + ".ex";
+            let fileName = uuid.v4() + ".jpg";
             img.mv(path.resolve(__dirname, '..', fileName));
             if (!name || !xp || !exercise || !countExercise) {
                 return next(ApiError.noRequest('Ошибка, запрос не пройден'));
