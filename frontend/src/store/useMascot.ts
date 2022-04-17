@@ -6,6 +6,31 @@ import ivanGrozniyPetrovi4 from '@/assets/mascot/faces/ivanGrozniyPetrovi4.svg'
 import happy from '@/assets/mascot/faces/happy.svg'
 import angry from '@/assets/mascot/faces/angry.svg'
 
+const dialog2 = [{
+  question: 'Сәлам, мин Майя!',
+  timeout: 3000,
+  animation: 'sea wave'
+}, {
+  question: 'Нихәл?!',
+  timeout: 15000,
+  animation: 'sea',
+  answers: [{
+    text: 'Шәп!',
+    emote: happy,
+    reaction: 'Шәп!',
+    timeout: 1500
+  }, {
+    text: 'Әйбәт!',
+    emote: happy,
+    reaction: 'Шәп!',
+    timeout: 1500
+  }, {
+    text: 'Бик яхшы!',
+    emote: happy,
+    reaction: 'Шәп!',
+    timeout: 1500
+  }]
+}]
 const dialog1 = [{
   question: 'Салам!',
   timeout: 3000,
@@ -82,7 +107,7 @@ export default defineStore('mascot', {
     dialog1 () {
       this.clearDialog()
       this.clearNextTimout()
-      this.dialog = dialog1 as any
+      this.dialog = (Math.random() > 0.5 ? dialog1 : dialog2) as any
       this.step = -1
       this.visible = true
       this.playNextDialog()
