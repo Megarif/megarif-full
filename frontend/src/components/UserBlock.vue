@@ -12,7 +12,8 @@
       </h3>
       <div class="user-block__list-item">
         <img src="@/assets/lvl.svg">
-        <span>{{ user.xp || 0 }}</span>
+        <span>{{ user.getLvl.lvl || 0 }}</span>
+        <span style="font-size: 12px">{{ user.getLvl.xp ? `(${String(user.getLvl.percentage * 100).slice(0, 5)}%)` : '' }}</span>
       </div>
       <div class="user-block__list-item">
         <img src="@/assets/coins.svg">
@@ -23,11 +24,14 @@
         <span>{{ user.rating || 0 }}</span>
       </div>
       <div class="user-block__list-hp">
-        <img src="@/assets/hearth.svg">
-        <img src="@/assets/hearth.svg">
-        <img src="@/assets/hearth.svg">
-        <img src="@/assets/hearth.svg">
-        <img src="@/assets/hearth.svg">
+        <img :src="user.getHearths < 2 ? (user.getHearths < 1 ? eh : hh) : h" alt="hearth">
+        <img :src="user.getHearths < 4 ? (user.getHearths < 3 ? eh : hh) : h" alt="hearth">
+        <img :src="user.getHearths < 6 ? (user.getHearths < 5 ? eh : hh) : h" alt="hearth">
+        <img :src="user.getHearths < 8 ? (user.getHearths < 7 ? eh : hh) : h" alt="hearth">
+        <img :src="user.getHearths < 10 ? (user.getHearths < 9 ? eh : hh) : h" alt="hearth">
+        <span>
+          {{ user.getTimeToNext }}
+        </span>
       </div>
     </div>
   </section>
@@ -40,6 +44,9 @@
 import useUser from '@/store/useUser'
 import useLang from '@/store/useLang'
 import userAvatar from '@/assets/avatar.svg'
+import h from '@/assets/hearth.svg'
+import hh from '@/assets/halfHearth.svg'
+import eh from '@/assets/emptyHearth.svg'
 
 const user = useUser()
 const lang = useLang()
@@ -95,7 +102,11 @@ console.log(user.username)
   color: #2B2B2B;
 }
 .user-block__list-hp {
-
+  span {
+    margin-top: 3px;
+    position: absolute;
+    font-size: 12px;
+  }
 }
 
 .user-circle-avatar {

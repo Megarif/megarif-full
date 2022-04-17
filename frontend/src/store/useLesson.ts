@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import envi from '@/envi'
 import axios, { AxiosResponse } from 'axios'
+import data from '@/data/exercise.json'
 
 interface Lesson {
   countExercise: number
@@ -14,16 +15,14 @@ interface Lesson {
 }
 
 interface LessonState {
-  current: null
-  lesson: Lesson | null
+  current: Lesson | null
   lessons: Array<Lesson> | null
 }
 
 export default defineStore('lesson', {
   state: (): LessonState => ({
-    current: null,
-    lesson: null,
-    lessons: null
+    current: null, // null,
+    lessons: [],  // null
   }),
   actions: {
     getLessons (): Promise<AxiosResponse<any, any>> {
@@ -39,7 +38,6 @@ export default defineStore('lesson', {
       promise.then((response) => {
         this.setCurrent(response.data)
       })
-
       return promise
     },
     setCurrent (current: LessonState['current']) {

@@ -29,7 +29,7 @@
             <span> {{ 10 }} Минут </span>
           </div>
         </div>
-        <button @click="lesson.getCurrent(les.id)">
+        <button @click="goToLesson(les.id)">
           Пройти урок!
         </button>
       </div>
@@ -43,10 +43,17 @@
 >
 import UserBlock from '@/components/UserBlock.vue'
 import useLesson from '@/store/useLesson'
+import router from '@/router'
 
 const lesson = useLesson()
 
 lesson.getLessons()
+
+const goToLesson = (id: number) => {
+  lesson.getCurrent(id)
+  router.push(`/exercise/${id}`)
+}
+
 </script>
 
 <style

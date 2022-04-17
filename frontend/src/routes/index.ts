@@ -88,6 +88,24 @@ const routes: Array<RouteRecordRaw> = [
       layout: layouts.main,
       userRequired: true
     }
+  },
+  {
+    path: '/exercise/:id',
+    name: 'Exercise',
+    component: () => import('@/views/LessonExercise.vue'),
+    meta: {
+      layout: layouts.lesson,
+      userRequired: true
+    }
+  },
+  {
+    path: '/quiz/:id',
+    name: 'Quiz',
+    component: () => import('@/views/LessonQuiz.vue'),
+    meta: {
+      layout: layouts.lesson,
+      userRequired: true
+    }
   }
 ]
 

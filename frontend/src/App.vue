@@ -1,5 +1,6 @@
 <template>
   <component :is="layout" />
+  <mascot />
 </template>
 
 <script
@@ -11,6 +12,7 @@ import layouts from '@/layouts'
 import { useRoute } from 'vue-router'
 import useLang from '@/store/useLang'
 import useUser from '@/store/useUser'
+import Mascot from '@/components/Mascot.vue'
 
 const lang = useLang()
 lang.init()
