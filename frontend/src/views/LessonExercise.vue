@@ -41,10 +41,17 @@ import useLang from '@/store/useLang'
 import useLesson from '@/store/useLesson'
 import useUser from '@/store/useUser'
 import envi from '@/envi'
+import useMascot from '@/store/useMascot'
 
+const mascot = useMascot()
 const user = useUser()
 const lang = useLang()
 const lesson = useLesson()
+
+if (Math.random() < 0.33) {
+  console.log('mascot')
+  mascot.randomDialog()
+}
 </script>
 
 <style
