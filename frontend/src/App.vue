@@ -10,9 +10,12 @@ import { computed } from 'vue'
 import layouts from '@/layouts'
 import { useRoute } from 'vue-router'
 import useLang from '@/store/useLang'
+import useUser from '@/store/useUser'
 
 const lang = useLang()
 lang.init()
+const user = useUser()
+user.init()
 const route = useRoute()
 
 const layout = computed(() => {

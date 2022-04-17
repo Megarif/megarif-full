@@ -65,9 +65,11 @@ import { ref } from 'vue'
 import useUser from '@/store/useUser'
 import useLang from '@/store/useLang'
 import ChooseLang from '@/components/ChooseLang.vue'
+import { useRouter } from 'vue-router'
 
 const user = useUser()
 const lang = useLang()
+const router = useRouter()
 
 const username = ref('')
 const login = ref('')
@@ -78,6 +80,8 @@ const signup = () => {
     username: username.value,
     login: login.value,
     password: password.value
+  }).then(() => {
+    router.push({ name: 'Home' })
   })
 }
 </script>
@@ -88,7 +92,6 @@ const signup = () => {
 >
 
 header {
-  padding: 0 0 24px;
 
   nav {
     display: flex;

@@ -7,7 +7,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: () => import('@/views/Home.vue'),
     meta: {
-      layout: layouts.main
+      layout: layouts.main,
+      userRequired: true
     }
   },
   {
@@ -39,7 +40,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Profile',
     component: () => import('@/views/Profile.vue'),
     meta: {
-      layout: layouts.main
+      layout: layouts.main,
+      userRequired: true
     }
   },
   {
@@ -47,7 +49,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'NotFound',
     component: () => import('@/views/NotFound.vue'),
     meta: {
-      layout: layouts.empty
+      layout: layouts.empty,
+      userRequired: true
     }
   },
   {
@@ -55,7 +58,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Lessons',
     component: () => import('@/views/Lessons.vue'),
     meta: {
-      layout: layouts.main
+      layout: layouts.main,
+      userRequired: true
     }
   },
   {
@@ -63,7 +67,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Bookmarks',
     component: () => import('@/views/Bookmarks.vue'),
     meta: {
-      layout: layouts.main
+      layout: layouts.main,
+      userRequired: true
     }
   },
   {
@@ -71,7 +76,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Events',
     component: () => import('@/views/Events.vue'),
     meta: {
-      layout: layouts.main
+      layout: layouts.main,
+      userRequired: true
     }
   },
   {
@@ -79,7 +85,8 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Market',
     component: () => import('@/views/Market.vue'),
     meta: {
-      layout: layouts.main
+      layout: layouts.main,
+      userRequired: true
     }
   }
 ]

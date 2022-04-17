@@ -6,5 +6,17 @@
   "email": "Email",
   "en_uk": "English",
   "ru_ru": "Russian",
-  "ta_ta": "Tatar"
+  "ta_ta": "Tatar",
+  "unknown": "Unknown",
+  "lvl": "Level",
+  "exp": "Experience",
+  "coin": "Coins",
+  "rating": "Rating",
+  "health": "Hearths",
+  "edit_name": "Change name",
+  "edit_lang": "Change Language",
+  "feedback": "Feedback",
+  "terms": "Terms of use",
+  "exit": "Exit",
+  "delete_account": "Delete account"
 }

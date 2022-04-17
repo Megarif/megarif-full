@@ -7,10 +7,11 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach(async (to, from) => {
-  const user = useUser();
-  if (to.meta?.userRequired) {
+router.beforeEach(async (to) => {
+  const user = useUser()
 
+  if (to.meta?.userRequired && !user.id) {
+    router.replace({ name: 'Landing' })
   }
 })
 
