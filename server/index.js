@@ -403,11 +403,12 @@ const start = async () => {
         await sequelize.authenticate()
         await sequelize.sync({alter: true})
         // await Lessons.create({name: 'Әдәбият  Литература', xp: 16, countExercise: 8, exercise: a, quiz: one});
-        // await Lessons.create({name: ' Традицияләр  Традиции', xp: 16, countExercise: 8, exercise: b, quiz: two});
+        //  await Lessons.create({name: ' Традицияләр  Традиции', xp: 16, countExercise: 8, exercise: b, quiz: two});
         app.listen(PORT, () => console.log(`server starts...${PORT}`));
     } catch (e) {
         console.log(e);
     }
 }
+
 
 start()

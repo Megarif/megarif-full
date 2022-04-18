@@ -10,8 +10,8 @@ route.get("/auth", userController.check);
 route.get("/info", authMiddleware, userController.userInfo);
 route.post("/downloadImg", userController.addImgForUser);
 route.post('/hp', userController.hp);
-route.post('/upXp', authMiddleware, userController.updateXp);
-route.post('/learned_lesson', authMiddleware, userController.saveLessons);
+route.post('/upXp', userController.updateXp);
+route.post('/learned_lesson', userController.saveLessons);
 route.delete('/delete', userController.deleteUser);
 
 module.exports = route;
