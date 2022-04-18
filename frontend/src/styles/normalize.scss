@@ -12,6 +12,7 @@ html {
   min-height: 100%;
   padding:    24px 16px;
   background-color: #F4F4F4;
+  // overflow: hidden;
 }
 
 body {
@@ -19,6 +20,7 @@ body {
   flex-flow: column;
   min-width: 100%;
   gap: 24px;
+  overflow-y: auto;
 }
 
 button, .button {
